@@ -84,8 +84,8 @@ fn hash_chain(input: BitArray, iters: Int) -> BitArray {
 }
 
 fn p(m: Int, d: Int) -> List(Int) {
-  // interpret m as a base d number
-  let assert Ok(s) = int.digits(m, d)
+  // interpret m as a base d+1 number
+  let assert Ok(s) = int.digits(m, d + 1)
   let len = list.length(s)
   let n0 = n0(d)
   let start = list.repeat(0, n0 - len)
@@ -94,8 +94,8 @@ fn p(m: Int, d: Int) -> List(Int) {
   // calculate checksum
   let c = d * n0 - list.fold(s, 0, int.add)
 
-  // interpret checksum as base d number
-  let assert Ok(c) = int.digits(c, d)
+  // interpret checksum as base d+1 number
+  let assert Ok(c) = int.digits(c, d + 1)
   let len = list.length(s)
   let n1 = n1(n0, d)
   let start = list.repeat(0, n1 - len)

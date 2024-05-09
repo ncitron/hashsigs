@@ -9,7 +9,6 @@ pub fn verify_success_test() {
   let msg = bit_array.from_string("hello")
   let sig = winternitz.sign(sk, msg)
   let is_valid = winternitz.verify(pk, sig, msg)
-
   is_valid
   |> should.be_true
 }
